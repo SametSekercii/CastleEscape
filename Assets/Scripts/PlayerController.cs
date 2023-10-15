@@ -6,9 +6,13 @@ public class PlayerController : MonoBehaviour
 {
     public Joystick floatingJoystick;
     PlayerMovement _playerMovement;
+    Animator animator;
+    Rigidbody rb;
     void Start()
     {
-        _playerMovement = new PlayerMovement(transform,floatingJoystick,5);
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
+        _playerMovement = new PlayerMovement(transform, rb, animator,floatingJoystick,5);
         
     }
 
