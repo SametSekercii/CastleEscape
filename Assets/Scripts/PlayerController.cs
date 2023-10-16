@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Joystick floatingJoystick;
     PlayerMovement _playerMovement;
-    Animator animator;
-    Rigidbody rb;
+    PlayerAnimations _playerAnimations;
+    PlayerInput _playerInput;
     void Start()
     {
-        animator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody>();
-        _playerMovement = new PlayerMovement(transform, rb, animator,floatingJoystick,5);
+        _playerInput = GetComponent<PlayerInput>();
+        _playerMovement = new PlayerMovement(transform, GetComponent<Rigidbody>(),5);
+        _playerAnimations=new PlayerAnimations(GetComponent<Animator>());
         
     }
 
     
-    void Update()
+    void FixedUpdate()
     {
-        _playerMovement.Movement();
+        _playerMovement.Movement(_playerInput.moveVector);
+        _playerAnimations.SetAnimations(_playerInput.moveVector);
         
     }
 }
