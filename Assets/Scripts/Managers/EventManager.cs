@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 public enum GameEvent
 {
-    OnPlaySound
+    OnPlaySound,
+
 
 }
 public static class EventManager
