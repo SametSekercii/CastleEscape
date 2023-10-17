@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Key : Item,ICollectables
+public class Key : Collectable
 {
-    public Transform[] canUnlock;
+    public Door[] doorsCanUnlock;
 
-    public void OnCollect()
+    public override void OnCollect()
     {
         UnlockDoors();
         EventManager.Broadcast(GameEvent.OnPlaySound, "SoundCollect");
@@ -18,9 +18,9 @@ public class Key : Item,ICollectables
 
     private void UnlockDoors()
     {
-        for (int i = 0; canUnlock.Length > i; i++)
+        for (int i = 0; doorsCanUnlock.Length > i; i++)
         {
-            canUnlock[i].GetComponent<Collider>().enabled = false;
+            doorsCanUnlock[i].Unlock();
         }
 
     }

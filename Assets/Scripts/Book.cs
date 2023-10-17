@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Book : Item, ICollectables
+public class Book : Collectable
 {
 
     public int levelUpAmount;
 
 
-    public void OnCollect()
+    public override void OnCollect()
     {
         EventManager.Broadcast(GameEvent.OnPlaySound, "SoundCollect");
         LevelUp();

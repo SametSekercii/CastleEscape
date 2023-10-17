@@ -338,9 +338,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7449024475733990305}
   - component: {fileID: 7449024475733990306}
+  - component: {fileID: 3015643280437719877}
   m_Layer: 7
   m_Name: YellowDoor
-  m_TagString: YellowDoor
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -354,7 +355,7 @@ Transform:
   m_GameObject: {fileID: 7794482905629114651}
   m_LocalRotation: {x: 0, y: 0.9999984, z: 0, w: 0.0017977266}
   m_LocalPosition: {x: -1.52, y: 0.0060782433, z: -15.68}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0334818, y: 0.849762, z: 0.84976405}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5985819200653721796}
@@ -375,3 +376,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.2253466, y: 2.1984582, z: 0.9325199}
   m_Center: {x: 0.011002541, y: 1.179734, z: 0.03540325}
+--- !u!114 &3015643280437719877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7794482905629114651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7e01b68ffe2e3140a3ee79e6767f334, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLocked: 0

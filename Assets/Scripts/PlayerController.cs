@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        ICollectables collectable= other.GetComponent<ICollectables>();
+        Collectable collectable= other.GetComponent<Collectable>();
 
         if(collectable != null ) 
         {

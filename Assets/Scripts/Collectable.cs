@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public abstract class Collectable : MonoBehaviour
 {
     public string name;
-    public Sprite objectIcon;
-   
+
+    public abstract void OnCollect();
+
 }
