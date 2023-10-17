@@ -22,4 +22,15 @@ public class PlayerController : MonoBehaviour
         _playerAnimations.SetAnimations(_playerInput.moveVector);
         
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        ICollectables collectable= other.GetComponent<ICollectables>();
+
+        if(collectable != null ) 
+        {
+            collectable.OnCollect();
+            
+        }
+    }
 }

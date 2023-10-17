@@ -5,7 +5,8 @@ public enum GameEvent
 {
     OnPlaySound,
     OnEscape,
-    OnFail
+    OnFail,
+    OnCollectItem
 
 
 }
