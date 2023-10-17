@@ -4,6 +4,8 @@ using System.Collections.Generic;
 public enum GameEvent
 {
     OnPlaySound,
+    OnEscape,
+    OnFail
 
 
 }

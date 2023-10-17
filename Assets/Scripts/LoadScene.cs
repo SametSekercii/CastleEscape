@@ -19,6 +19,6 @@ public class LoadScene : MonoBehaviour
 
     void SceneLoad()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(data.gameLevel);
     }
 }
