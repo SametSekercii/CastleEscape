@@ -42,6 +42,10 @@ public class PlayerController : Knights
         level += _levelUpAmount;
         levelText.text = "LV." + level.ToString();
     }
+    protected override void Attack()
+    {
+
+    }
 
     private void OnEnable()
     {

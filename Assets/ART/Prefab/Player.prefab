@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 4096862883907454471}
   - component: {fileID: 4096862883907454470}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: PlayerLevelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -399,6 +399,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225744660bf51d54aaae06e9d2f3abbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 1
+  levelText: {fileID: 4096862883907454470}
 --- !u!114 &4096862884512731350
 MonoBehaviour:
   m_ObjectHideFlags: 0
