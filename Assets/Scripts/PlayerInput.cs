@@ -8,8 +8,8 @@ public class PlayerInput : MonoBehaviour
     public Joystick joystick;
     public Vector3 moveVector { get; private set; }
 
-    
 
+    
 
     void Update()
     {
@@ -21,5 +21,6 @@ public class PlayerInput : MonoBehaviour
     {
         moveVector = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
     }
+     
 }
    

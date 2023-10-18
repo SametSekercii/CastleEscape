@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Collectable : MonoBehaviour
 {
     public string name;
+    
 
     public abstract void OnCollect();
 

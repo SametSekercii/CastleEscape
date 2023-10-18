@@ -6,7 +6,8 @@ public enum GameEvent
     OnPlaySound,
     OnEscape,
     OnFail,
-    OnCollectItem
+    OnCollectKey,
+    OnCollectBook
 
 
 }

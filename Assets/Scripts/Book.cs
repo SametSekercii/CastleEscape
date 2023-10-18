@@ -13,6 +13,7 @@ public class Book : Collectable
         EventManager.Broadcast(GameEvent.OnPlaySound, "SoundCollect");
         LevelUp();
         gameObject.SetActive(false);
+        EventManager.Broadcast(GameEvent.OnCollectBook);
     }
 
     private void LevelUp()

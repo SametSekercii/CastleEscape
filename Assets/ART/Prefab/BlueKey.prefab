@@ -114,6 +114,7 @@ MonoBehaviour:
   name: Blue Key
   doorsCanUnlock:
   - {fileID: 0}
+  icon: {fileID: 2927679382276654402, guid: deb0a5f22cc14704195e3e6e40b751d7, type: 3}
 --- !u!1001 &236972562039313276
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -20,10 +20,10 @@ public class Door : MonoBehaviour
 
 
     }
-    public void Unlock()
-    {
-        col.isTrigger = true;
+    public void Unlock() => col.isTrigger = true;
+    
+        
 
-    }
+    
 
 }
