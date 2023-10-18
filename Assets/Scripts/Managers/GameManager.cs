@@ -9,7 +9,7 @@ public class GameManager : UnitySingleton<GameManager>
     private void Awake()
     {
         Application.targetFrameRate = 60;
-        gameData.playerLevel = 1;
+     
     }
    
     void Start()

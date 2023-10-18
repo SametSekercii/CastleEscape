@@ -8,7 +8,7 @@ public class GameData : ScriptableObject
 {
     [Header("Float & Int")]
     public int gameLevel=1;
-    public int playerLevel = 1;
+   
 
 
 

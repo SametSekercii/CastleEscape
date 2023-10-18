@@ -18,7 +18,6 @@ public class UIManager : UnitySingleton<GameManager>
     [SerializeField] private GameObject winPanel;
     [SerializeField] private GameObject failPanel;
     [SerializeField] private GameObject joystick;
-    [SerializeField] private TMP_Text playerLevel;
     
     
 
@@ -35,7 +34,7 @@ public class UIManager : UnitySingleton<GameManager>
         
         gameManager = FindObjectOfType<GameManager>();
         gameData = gameManager.gameData;
-        TextCheck();
+      
 
     }
    
@@ -45,7 +44,7 @@ public class UIManager : UnitySingleton<GameManager>
         EventManager.AddHandler(GameEvent.OnEscape, OnEscape);
         EventManager.AddHandler(GameEvent.OnFail, OnEscape);
         EventManager.AddHandler(GameEvent.OnCollectKey, OnCollectKey);
-        EventManager.AddHandler(GameEvent.OnCollectBook, OnCollectBook);
+       
 
     }
 
@@ -55,21 +54,18 @@ public class UIManager : UnitySingleton<GameManager>
     {
         EventManager.RemoveHandler(GameEvent.OnEscape, OnEscape);
         EventManager.RemoveHandler(GameEvent.OnFail, OnEscape);
-        EventManager.RemoveHandler(GameEvent.OnCollectKey,OnCollectKey);
-        EventManager.RemoveHandler(GameEvent.OnCollectBook, OnCollectBook);
+       
+        
 
     }
-    private void TextCheck()
-    {
-        playerLevel.text = "LV." + gameData.playerLevel.ToString();
-    }
+   
 
     private void OnEscape()
     {
         OpenPanel(winPanel,"SoundPanelPop");
         DisableJoyStick();
         gameData.gameLevel += 1;
-        gameData.playerLevel = 1;
+
     }
     private void OnFail()
     {
@@ -98,10 +94,7 @@ public class UIManager : UnitySingleton<GameManager>
         KeyIconPlacer(icon);
 
     }
-    private void OnCollectBook()
-    {
-        playerLevel.text ="LV."+ gameData.playerLevel.ToString();
-    }
+    
     private void KeyIconPlacer(GameObject keyIcon)
     {
         keyIcon.transform.DOMove(keySlots[keysInSlot].transform.position, 1.2f);

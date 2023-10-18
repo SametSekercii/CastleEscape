@@ -11,13 +11,10 @@ public class Book : Collectable
     public override void OnCollect()
     {
         EventManager.Broadcast(GameEvent.OnPlaySound, "SoundCollect");
-        LevelUp();
+ 
         gameObject.SetActive(false);
-        EventManager.Broadcast(GameEvent.OnCollectBook);
+        EventManager.Broadcast(GameEvent.OnCollectBook, levelUpAmount);
     }
 
-    private void LevelUp()
-    {
-        GameManager.Instance.gameData.playerLevel += levelUpAmount;
-    }
+  
 }

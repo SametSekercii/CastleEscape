@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Knights
 {
     private float moveSpeed=5;
     PlayerMovement _playerMovement;
-    PlayerAnimations _playerAnimations;
+    PlayerAnimationController PlayerAnimationController;
     PlayerInput _playerInput;
     void Start()
     {
+        LevelTextInitializer();
         _playerInput = GetComponent<PlayerInput>();
         _playerMovement = new PlayerMovement(transform, GetComponent<Rigidbody>(), moveSpeed);
-        _playerAnimations=new PlayerAnimations(GetComponent<Animator>());
+        PlayerAnimationController = new PlayerAnimationController(GetComponent<Animator>());
         
     }
 
@@ -20,7 +22,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         _playerMovement.Movement(_playerInput.moveVector);
-        _playerAnimations.SetAnimations(_playerInput.moveVector);
+        PlayerAnimationController.SetAnimations(_playerInput.moveVector);
         
     }
 
@@ -33,5 +35,20 @@ public class PlayerController : MonoBehaviour
             collectable.OnCollect();
             
         }
+    }
+    private void OnCollectBook(object levelUpAmount)
+    {
+       int  _levelUpAmount= (int)levelUpAmount;
+        level += _levelUpAmount;
+        levelText.text = "LV." + level.ToString();
+    }
+
+    private void OnEnable()
+    {
+        EventManager.AddHandler(GameEvent.OnCollectBook, OnCollectBook);
+    }
+    private void OnDisable()
+    {
+        EventManager.RemoveHandler(GameEvent.OnCollectBook, OnCollectBook);
     }
 }

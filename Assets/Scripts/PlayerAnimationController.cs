@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAnimations : MonoBehaviour
+public class PlayerAnimationController : MonoBehaviour
 {
     private Animator playerAnimator;
-    public PlayerAnimations(Animator playerAnimator)
+    public PlayerAnimationController(Animator playerAnimator)
     {
         this.playerAnimator = playerAnimator;
     }
 
-    
 
-    public void SetAnimations(Vector3 moveVector) 
+
+    public void SetAnimations(Vector3 moveVector)
     {
-        if (moveVector.magnitude>0)
+        if (moveVector.magnitude > 0)
         {
             playerAnimator.SetBool("isRun", true);
         }
@@ -22,5 +22,7 @@ public class PlayerAnimations : MonoBehaviour
         {
             playerAnimator.SetBool("isRun", false);
         }
-    } 
+    }
+
+    
 }
