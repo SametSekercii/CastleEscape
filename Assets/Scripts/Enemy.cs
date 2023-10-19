@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : Knights
 {
-    protected override void Attack()
+    protected override void Attack(Transform Target)
     {
         
     }
