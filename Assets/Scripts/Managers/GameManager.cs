@@ -28,4 +28,17 @@ public class GameManager : UnitySingleton<GameManager>
     {
         SaveManager.SaveData(gameData);
     }
+
+    private void OnEnable()
+    {
+        EventManager.AddHandler(GameEvent.OnEscape, OnEscape);
+    }
+    private void OnDisable()
+    {
+        EventManager.AddHandler(GameEvent.OnEscape, OnEscape);
+    }
+    private void OnEscape()
+    {
+        gameData.gameLevel++;
+    }
 }

@@ -5417,17 +5417,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2989941937331053745, guid: af0251662ce5880478fc4015a2c7df13, type: 3}
   m_PrefabInstance: {fileID: 1994962784}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2029190894 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1575003838323585909, guid: a23ff5e16a2ceee44942d01ea5d7cde3, type: 3}
-  m_PrefabInstance: {fileID: 1575003836858600859}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a08e1a00866fba64d8c0be49282247fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2038200866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5703,7 +5692,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3600699251323918441, guid: 28b49acb6b345ab468c1a0147ebc1391, type: 3}
       propertyPath: m_Name
-      value: GUI Canvas
+      value: UI Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 3600699251323918453, guid: 28b49acb6b345ab468c1a0147ebc1391, type: 3}
       propertyPath: m_Pivot.x
@@ -5789,10 +5778,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3600699252028653040, guid: 28b49acb6b345ab468c1a0147ebc1391, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2029190894}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28b49acb6b345ab468c1a0147ebc1391, type: 3}
 --- !u!1001 &4096862884704323332

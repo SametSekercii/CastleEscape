@@ -64,7 +64,7 @@ public class UIManager : UnitySingleton<GameManager>
     {
         OpenPanel(winPanel,"SoundPanelPop");
         DisableJoyStick();
-        gameData.gameLevel += 1;
+       
 
     }
     private void OnFail()
