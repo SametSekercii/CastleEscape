@@ -1,20 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Playables;
+
 
 public class PlayerController : Knights
 {
-    private float moveSpeed=5;
+    public enum PlayerState { isMoving,isAttacking}
+    public PlayerState state;
     PlayerMovement _playerMovement;
     PlayerAnimationController PlayerAnimationController;
     PlayerInput _playerInput;
     void Start()
     {
-        LevelTextInitializer();
+        rb=GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
         _playerInput = GetComponent<PlayerInput>();
-        _playerMovement = new PlayerMovement(transform, GetComponent<Rigidbody>(), moveSpeed);
-        PlayerAnimationController = new PlayerAnimationController(GetComponent<Animator>());
+
+        LevelTextInitializer();
+
+        _playerMovement = new PlayerMovement(transform, rb, moveSpeed);
+        PlayerAnimationController = new PlayerAnimationController(animator);
         
     }
 
@@ -22,6 +27,12 @@ public class PlayerController : Knights
     void FixedUpdate()
     {
         _playerMovement.Movement(_playerInput.moveVector);
+
+        if(_playerInput.moveVector.magnitude > 0)
+        {
+            state= PlayerState.isMoving;
+
+        }
         PlayerAnimationController.SetAnimations(_playerInput.moveVector);
         
     }
@@ -36,16 +47,14 @@ public class PlayerController : Knights
             
         }
     }
+    
     private void OnCollectBook(object levelUpAmount)
     {
        int  _levelUpAmount= (int)levelUpAmount;
         level += _levelUpAmount;
         levelText.text = "LV." + level.ToString();
     }
-    protected override void Attack()
-    {
-
-    }
+   
 
     private void OnEnable()
     {

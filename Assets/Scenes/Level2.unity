@@ -1318,7 +1318,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 71.024, y: 299.014, z: 278.397}
 --- !u!1001 &737332145
 PrefabInstance:
@@ -2419,7 +2419,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4096862884512567569, guid: 7e6030edee3bbb043a67a9763f68ffb1, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4096862884512567569, guid: 7e6030edee3bbb043a67a9763f68ffb1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2469,6 +2469,14 @@ PrefabInstance:
       propertyPath: joystick
       value: 
       objectReference: {fileID: 2060827949}
+    - target: {fileID: 4096862885035393895, guid: 7e6030edee3bbb043a67a9763f68ffb1, type: 3}
+      propertyPath: _level
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4096862885035393895, guid: 7e6030edee3bbb043a67a9763f68ffb1, type: 3}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e6030edee3bbb043a67a9763f68ffb1, type: 3}
 --- !u!1001 &1120889116
@@ -4306,7 +4314,7 @@ PrefabInstance:
       objectReference: {fileID: 959284811}
     - target: {fileID: 1575003838177091829, guid: a23ff5e16a2ceee44942d01ea5d7cde3, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1575003838177091829, guid: a23ff5e16a2ceee44942d01ea5d7cde3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4644,7 +4652,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3600699251323918453, guid: 28b49acb6b345ab468c1a0147ebc1391, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3600699251323918453, guid: 28b49acb6b345ab468c1a0147ebc1391, type: 3}
       propertyPath: m_AnchorMax.x

@@ -30,7 +30,7 @@ public class Perspective : Sense
     {
         while (true) 
         {
-            yield return new WaitForSeconds(delay);
+            yield return null;
             FindVisibleTargets();
 
         }
