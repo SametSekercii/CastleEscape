@@ -1019,7 +1019,8 @@ GameObject:
   - component: {fileID: 1880237516851552900}
   - component: {fileID: 1880237516851552903}
   - component: {fileID: 1880237516851552902}
-  m_Layer: 0
+  - component: {fileID: 1144812979}
+  m_Layer: 11
   m_Name: GuardEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1033,7 +1034,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1880237516851552905}
-  m_LocalRotation: {x: -0, y: 0.7202652, z: -0, w: 0.6936988}
+  m_LocalRotation: {x: 0, y: 0.7202667, z: 0, w: 0.69369733}
   m_LocalPosition: {x: -6.2300997, y: 0.00607872, z: -31.923859}
   m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_ConstrainProportionsScale: 0
@@ -1111,9 +1112,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAlive: 1
-  level: 4
+  level: 6
   moveSpeed: 5
   levelText: {fileID: 1880237516577340735}
+--- !u!195 &1144812979
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880237516851552905}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1880237516898701422
 GameObject:
   m_ObjectHideFlags: 0

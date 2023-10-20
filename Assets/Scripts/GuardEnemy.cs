@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,9 +6,9 @@ using UnityEngine.AI;
 
 public class GuardEnemy : Enemy
 {
-    public enum GuardEnemyState{isGuarding,isAttacking ,isMoving}
+    public enum GuardEnemyState{isObservering,isAttacking ,isChargingTarget,isMovingGuardPoint}
 
-    GuardEnemyState state;
+    GuardEnemyState state=GuardEnemyState.isObservering;
     GuardEnemyAnimationController animationController;
     Vector3 guardPointPos;
     Quaternion guardPointRot;
@@ -28,61 +29,100 @@ public class GuardEnemy : Enemy
     private void Update()
     {
         animationController.SetAnimations(state);
+
         Mission();
+
+    }
+
+    void Mission()
+    {
+        switch (state) 
+        {
+            case GuardEnemyState.isObservering:
+                Observe();
+                //Debug.Log("Observing");
+                break;
+            case GuardEnemyState.isChargingTarget:
+                Charge(target);
+                //Debug.Log("Charging");
+                break;
+            case GuardEnemyState.isAttacking:
+                
+                //Debug.Log("Atttacking");
+                break;
+            case GuardEnemyState.isMovingGuardPoint:
+                //Debug.Log("MovingGuardPoint");
+                MoveGuardPoint();
+                break;
         
-
+        
+        }
     }
-
-
-    private void Move()
+    private void MoveGuardPoint()
     {
+        agent.SetDestination(guardPointPos);
+        if(Vector3.Distance(guardPointPos, transform.position)<0.2f)
+        {
 
+            transform.localRotation = guardPointRot;
+            state = GuardEnemyState.isObservering;
+            
+        }
     }
-    private void Guard()
+    protected override void Attack()
     {
+        IDamageable damageable=target.GetComponent<IDamageable>();
+        if(damageable._isAlive)
+        {
+            agent.SetDestination(transform.position);
+            damageable.TakeDamage();
+        }
+        else StartCoroutine(DelayedStateChange(GuardEnemyState.isMovingGuardPoint));
+
 
     }
+   IEnumerator DelayedStateChange(GuardEnemyState _state)
+    {
+        yield return new WaitForSeconds(1f);
+        state = _state;
+    }
+    private void Charge(Transform target)
+    {
+        Vector3 targetPos = target.position;
+        agent.SetDestination(targetPos);
+
+        if (Vector3.Distance(transform.position, targetPos) < attackRange)
+        {
+            state = GuardEnemyState.isAttacking;
+        }
+
+        if (GetVisibleTargets().Count <= 0) state = GuardEnemyState.isMovingGuardPoint;
+
+    }
+    private void Observe()
+    {
+        if (GetVisibleTargets().Count > 0)
+        {
+            Transform target = GetVisibleTargets()[0];
+
+            IDamageable damageableTarget = target.GetComponent<IDamageable>();
+            if (level > damageableTarget._level && damageableTarget._isAlive)
+            {
+                SetSeenTarget(target);
+                state = GuardEnemyState.isChargingTarget;
+            }
+        }
+        else state= GuardEnemyState.isObservering;
+
+
+    }
+   
 
     private void SetGuardPointValues()
     {
         guardPointPos = transform.position;
         guardPointRot = transform.localRotation;
     }
-    private void Mission()
-    {
-        if (GetVisibleTargets().Count > 0)
-        {
-          
-            IDamageable target = fieldOfView.visibleTargets[0].GetComponent<IDamageable>();
-            if (level > target._level)
-            {
-                state = GuardEnemyState.isMoving;
-                agent.SetDestination(fieldOfView.visibleTargets[0].position);
-
-                if (Vector3.Distance(transform.position, fieldOfView.visibleTargets[0].position) < attackRange)
-                {
-                    agent.SetDestination(transform.position);
-                    state = GuardEnemyState.isAttacking;
-                    Attack(target);
-                }
-
-            }
-        }
-        else
-        {
-            if (Vector3.Distance(transform.position, guardPointPos) < 0.2f)
-            {
-                transform.rotation = guardPointRot;
-                state = GuardEnemyState.isGuarding;
-            }
-            else
-            {
-                agent.SetDestination(guardPointPos);
-                state = GuardEnemyState.isMoving;
-
-            }
-        }
-
-    }
+    
 
 }

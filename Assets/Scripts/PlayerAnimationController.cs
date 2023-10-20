@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static PlayerController;
 
 public class PlayerAnimationController
 {
@@ -12,16 +13,27 @@ public class PlayerAnimationController
 
 
 
-    public void SetAnimations(Vector3 moveVector)
+    public void SetAnimations(PlayerState state)
     {
-        if (moveVector.magnitude > 0)
+        switch (state) 
         {
-            playerAnimator.SetBool("isRun", true);
+            case PlayerState.isMoving:
+                playerAnimator.SetBool("isMoving", true);
+                break;
+            case PlayerState.isAttacking:
+                playerAnimator.SetBool("isAttacking", true);
+                break;
+
+            case PlayerState.isWaiting:
+                playerAnimator.SetBool("isMoving", false);
+                break;
+        
         }
-        else
-        {
-            playerAnimator.SetBool("isRun", false);
-        }
+    }
+
+    public void StopAttack()
+    {
+        playerAnimator.SetBool("isAttacking", false);
     }
 
     

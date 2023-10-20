@@ -19,13 +19,13 @@ public class GuardEnemyAnimationController
             animator.SetBool("isMoving", false);
             animator.SetBool("isAttacking",true);
         }
-        if (state == GuardEnemyState.isGuarding)
+        if (state == GuardEnemyState.isObservering)
         {
             animator.SetBool("isGuarding", true);
             animator.SetBool("isMoving", false);
             animator.SetBool("isAttacking", false);
         }
-        if(state == GuardEnemyState.isMoving)
+        if(state == GuardEnemyState.isChargingTarget ||state== GuardEnemyState.isMovingGuardPoint)
         {
             animator.SetBool("isGuarding", false);
             animator.SetBool("isMoving", true);
