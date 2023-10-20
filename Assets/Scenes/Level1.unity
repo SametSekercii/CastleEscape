@@ -5839,6 +5839,10 @@ PrefabInstance:
       propertyPath: joystick
       value: 
       objectReference: {fileID: 1553147392}
+    - target: {fileID: 4096862885035393895, guid: 7e6030edee3bbb043a67a9763f68ffb1, type: 3}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e6030edee3bbb043a67a9763f68ffb1, type: 3}
 --- !u!1001 &4426689680194153256

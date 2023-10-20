@@ -19,8 +19,6 @@ public class UIManager : UnitySingleton<GameManager>
     [SerializeField] private GameObject failPanel;
     [SerializeField] private GameObject joystick;
     
-    
-
     [Space(15)]
     [Header("Arrays")]
     [SerializeField] private GameObject[] keySlots;
@@ -30,42 +28,25 @@ public class UIManager : UnitySingleton<GameManager>
     private int keysInSlot = 0;
 
     private void Awake()
-    {
-        
+    {   
         gameManager = FindObjectOfType<GameManager>();
         gameData = gameManager.gameData;
-      
-
     }
-   
-
     private void OnEnable()
     {
         EventManager.AddHandler(GameEvent.OnEscape, OnEscape);
-        EventManager.AddHandler(GameEvent.OnFail, OnEscape);
+        EventManager.AddHandler(GameEvent.OnFail, OnFail);
         EventManager.AddHandler(GameEvent.OnCollectKey, OnCollectKey);
-       
-
     }
-
-    
-
     private void OnDisable()
     {
         EventManager.RemoveHandler(GameEvent.OnEscape, OnEscape);
-        EventManager.RemoveHandler(GameEvent.OnFail, OnEscape);
-       
-        
-
+        EventManager.RemoveHandler(GameEvent.OnFail, OnFail);
     }
-   
-
     private void OnEscape()
     {
         OpenPanel(winPanel,"SoundPanelPop");
         DisableJoyStick();
-       
-
     }
     private void OnFail()
     {
@@ -77,14 +58,11 @@ public class UIManager : UnitySingleton<GameManager>
     {
         panel.gameObject.SetActive(true);
         EventManager.Broadcast(GameEvent.OnPlaySound, sound);
-
     }
     public void Next()
     {
-
         EventManager.Broadcast(GameEvent.OnPlaySound, "SoundClick");
         SceneManager.LoadScene(gameData.gameLevel);
-
     }
     private void OnCollectKey(object keyIcon)
     {
@@ -92,14 +70,11 @@ public class UIManager : UnitySingleton<GameManager>
         var icon =Instantiate(_keyIcon, transform);
         icon.transform.position = transform.position;
         KeyIconPlacer(icon);
-
     }
-    
     private void KeyIconPlacer(GameObject keyIcon)
     {
         keyIcon.transform.DOMove(keySlots[keysInSlot].transform.position, 1.2f);
         keysInSlot++;
-
     }
 
     

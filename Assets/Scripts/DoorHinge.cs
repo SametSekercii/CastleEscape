@@ -14,16 +14,11 @@ public class DoorHinge : MonoBehaviour
         rb=GetComponent<Rigidbody>();
         hinge=GetComponent<HingeJoint>();
         motor=hinge.motor;
-        
     }
-
-    
     void FixedUpdate()
     {
-        CloseAutomaticly();
-        
+        CloseAutomaticly();   
     }
-
     void CloseAutomaticly()
     {
         angle=hinge.angle;

@@ -15,26 +15,17 @@ public abstract class Knights : MonoBehaviour,IDamageable
     
     protected Rigidbody rb;
     protected Animator animator;
-    
-
+   
     public int _level { get { return level; } set { value = level; } }
+    public bool _isAlive { get { return isAlive; } set { value = isAlive; } }
 
-
-    public void TakeDamage() 
-    {
-        Debug.Log("I'm Dead :(");
-        isAlive = false;
-       
-
-    }
+    public abstract void TakeDamage();
+    
     public void Attack(IDamageable target)
     {
         animator.SetBool("isAttacking",true);
         StartCoroutine(AttackStoper());
-       
         target.TakeDamage();
-        
-
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -42,7 +33,7 @@ public abstract class Knights : MonoBehaviour,IDamageable
 
         if (damageable != null)
         {
-            if (level > damageable._level) Attack(damageable);
+            if (level > damageable._level && damageable._isAlive) Attack(damageable);
            
         }
 

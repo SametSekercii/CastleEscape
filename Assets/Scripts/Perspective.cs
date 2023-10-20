@@ -16,7 +16,7 @@ public class Perspective : Sense
 
     public override void InitializeSense()
     {
-        StartCoroutine("FindTargetWithDelay", 0.7f);
+        StartCoroutine("FindTarget");
         
 
     }
@@ -26,7 +26,7 @@ public class Perspective : Sense
         
        
     }
-    IEnumerator FindTargetWithDelay(float delay)
+    IEnumerator FindTarget()
     {
         while (true) 
         {

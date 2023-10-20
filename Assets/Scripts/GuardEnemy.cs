@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class GuardEnemy : Enemy
 {
     public enum GuardEnemyState{isGuarding,isAttacking ,isMoving}
+
     GuardEnemyState state;
     GuardEnemyAnimationController animationController;
     Vector3 guardPointPos;
@@ -16,37 +17,56 @@ public class GuardEnemy : Enemy
     private void Start()
     {
         agent=GetComponent<NavMeshAgent>();
-        guardPointPos = transform.position;
-        guardPointRot = transform.localRotation;
+        fieldOfView = GetComponent<Perspective>();
+        animator = GetComponent<Animator>();
+
+        SetGuardPointValues();
         LevelTextInitializer();
-        fieldOfView=GetComponent<Perspective>();
-        animator =GetComponent<Animator>();
+        
         animationController = new GuardEnemyAnimationController(animator);
     }
     private void Update()
     {
         animationController.SetAnimations(state);
+        Mission();
+        
 
-        if (fieldOfView.visibleTargets.Count>0)
+    }
+
+
+    private void Move()
+    {
+
+    }
+    private void Guard()
+    {
+
+    }
+
+    private void SetGuardPointValues()
+    {
+        guardPointPos = transform.position;
+        guardPointRot = transform.localRotation;
+    }
+    private void Mission()
+    {
+        if (GetVisibleTargets().Count > 0)
         {
-            //Debug.Log(Vector3.Distance(transform.position, fieldOfView.visibleTargets[0].position));
-
+          
             IDamageable target = fieldOfView.visibleTargets[0].GetComponent<IDamageable>();
-            if(level>target._level)
+            if (level > target._level)
             {
-                state= GuardEnemyState.isMoving;
+                state = GuardEnemyState.isMoving;
                 agent.SetDestination(fieldOfView.visibleTargets[0].position);
 
-                if (Vector3.Distance(transform.position, fieldOfView.visibleTargets[0].position) < 1.1f)
+                if (Vector3.Distance(transform.position, fieldOfView.visibleTargets[0].position) < attackRange)
                 {
                     agent.SetDestination(transform.position);
                     state = GuardEnemyState.isAttacking;
                     Attack(target);
                 }
-                    
+
             }
-            
-           
         }
         else
         {
@@ -63,13 +83,6 @@ public class GuardEnemy : Enemy
             }
         }
 
-        
-
-
     }
-
-
-
-
 
 }

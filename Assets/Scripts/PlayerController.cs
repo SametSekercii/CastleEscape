@@ -64,4 +64,10 @@ public class PlayerController : Knights
     {
         EventManager.RemoveHandler(GameEvent.OnCollectBook, OnCollectBook);
     }
+
+    public override void TakeDamage()
+    {
+        isAlive = false;
+        EventManager.Broadcast(GameEvent.OnFail);
+    }
 }
