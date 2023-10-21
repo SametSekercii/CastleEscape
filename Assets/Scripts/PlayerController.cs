@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class PlayerController : Knights,IFieldOfView
 {
-    public enum PlayerState { isMoving,isAttacking,isWaiting,isDead}
+    public enum PlayerState { isMoving,isAttacking,isWaiting,isDeath}
     public PlayerState state;
     PlayerMovement _playerMovement;
     PlayerAnimationController PlayerAnimationController;
     PlayerInput _playerInput;
+    protected float deathDelay = 1.3f;
     public Perspective fieldOfView { get; set; }
 
     void Start()
@@ -69,7 +70,7 @@ public class PlayerController : Knights,IFieldOfView
         }
         else
         {
-            state = PlayerState.isDead;
+            state = PlayerState.isDeath;
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -91,14 +92,20 @@ public class PlayerController : Knights,IFieldOfView
             if (level > damageable._level && damageable._isAlive)
             {
                 target = collision.transform;
-                state = PlayerState.isAttacking;
-                Vector3 dirV = (target.position - transform.position).normalized;
-                Quaternion lookDirection = Quaternion.LookRotation(dirV);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, lookDirection, 360);
+                AttackOnCollision();
+
+
             }
 
         }
 
+    }
+    public override void AttackOnCollision()
+    {
+        state = PlayerState.isAttacking;
+        Vector3 dirV = (target.position - transform.position).normalized;
+        Quaternion lookDirection = Quaternion.LookRotation(dirV);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, lookDirection, 360);
     }
 
 
@@ -111,11 +118,19 @@ public class PlayerController : Knights,IFieldOfView
     }
     public override void TakeDamage()
     {
+        StartCoroutine(OnDeath());
+    }
+    IEnumerator OnDeath()
+    {
         isAlive = false;
+        rb.AddForce(-transform.forward + transform.up * 2, ForceMode.VelocityChange);
+        yield return new WaitForSeconds(deathDelay);
+        transform.gameObject.SetActive(false);
+        EffectPlacer.Instance.CreateDeathEffect(transform);
         EventManager.Broadcast(GameEvent.OnFail);
     }
 
-    protected override void Attack()
+    public override void Hit()
     {
         target.GetComponent<IDamageable>().TakeDamage();
         target = null;
@@ -131,7 +146,5 @@ public class PlayerController : Knights,IFieldOfView
         EventManager.RemoveHandler(GameEvent.OnCollectBook, OnCollectBook);
     }
 
-
-
-
+    
 }

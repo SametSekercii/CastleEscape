@@ -27,10 +27,10 @@ public class PlayerAnimationController
             case PlayerState.isWaiting:
                 playerAnimator.SetBool("isMoving", false);
                 break;
-            case PlayerState.isDead:
+            case PlayerState.isDeath:
                 playerAnimator.SetBool("isAttacking", false);
                 playerAnimator.SetBool("isMoving", false);
-                playerAnimator.SetBool("isDead", true);
+                playerAnimator.SetBool("isDeath", true);
                 break;
         
         }

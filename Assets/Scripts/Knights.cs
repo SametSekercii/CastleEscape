@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 
 
-public abstract class Knights : MonoBehaviour,IDamageable
+public abstract class Knights : MonoBehaviour,IDamageable,IAttacker
 {
    
     public bool isAlive = true;
@@ -22,7 +22,8 @@ public abstract class Knights : MonoBehaviour,IDamageable
 
     public abstract void TakeDamage();
 
-    protected abstract void Attack();
+    public abstract void Hit();
+    public abstract void AttackOnCollision();
     protected void SetSeenTarget(Transform _target)
     {
         target = _target;

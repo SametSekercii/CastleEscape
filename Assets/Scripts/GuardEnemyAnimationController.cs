@@ -31,12 +31,12 @@ public class GuardEnemyAnimationController
             animator.SetBool("isMoving", true);
             animator.SetBool("isAttacking", false);
         }
-        if(state==GuardEnemyState.isDead)
+        if(state==GuardEnemyState.isDeath)
         {
             animator.SetBool("isGuarding", false);
             animator.SetBool("isMoving", false);
             animator.SetBool("isAttacking", false);
-            animator.SetBool("isDead", true);
+            animator.SetBool("isDeath", true);
 
 
         }

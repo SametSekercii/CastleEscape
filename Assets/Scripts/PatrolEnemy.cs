@@ -8,7 +8,7 @@ using Newtonsoft.Json.Bson;
 
 public class PatrolEnemy : Enemy
 {
-    public enum PatrolEnemyState { isPatrolling,isChargingTarget,isAttacking, isBackingToPatrol,isDead }
+    public enum PatrolEnemyState { isPatrolling,isChargingTarget,isAttacking, isBackingToPatrol,isDeath }
     PatrolEnemyState state=PatrolEnemyState.isPatrolling;
     PatrolEnemyAnimationController animationController;
     public bool isReversePatrol;
@@ -40,7 +40,7 @@ public class PatrolEnemy : Enemy
         }
        else
         {
-            state = PatrolEnemyState.isDead;
+            state = PatrolEnemyState.isDeath;
         }
        
         
@@ -129,7 +129,7 @@ public class PatrolEnemy : Enemy
             }
         }
     }
-    protected override void Attack()
+    public override void Hit()
     {
         IDamageable damageable = target.GetComponent<IDamageable>();
         if (damageable._isAlive)
@@ -153,13 +153,19 @@ public class PatrolEnemy : Enemy
             if (level > damageable._level && damageable._isAlive)
             {
                 target = collision.transform;
-                state = PatrolEnemyState.isAttacking;
-                Vector3 dirV = (target.position - transform.position).normalized;
-                Quaternion lookDirection = Quaternion.LookRotation(dirV);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, lookDirection, 360);
+                AttackOnCollision();
+
+
             }
 
         }
 
+    }
+    public override void AttackOnCollision()
+    {
+        state = PatrolEnemyState.isAttacking;
+        Vector3 dirV = (target.position - transform.position).normalized;
+        Quaternion lookDirection = Quaternion.LookRotation(dirV);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, lookDirection, 360);
     }
 }

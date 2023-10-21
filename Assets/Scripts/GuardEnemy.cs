@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class GuardEnemy : Enemy
 {
-    public enum GuardEnemyState{isObservering,isAttacking ,isChargingTarget,isMovingGuardPoint,isDead}
+    public enum GuardEnemyState{isObservering,isAttacking ,isChargingTarget,isMovingGuardPoint,isDeath}
 
     GuardEnemyState state=GuardEnemyState.isObservering;
     GuardEnemyAnimationController animationController;
@@ -36,7 +36,7 @@ public class GuardEnemy : Enemy
         }
         else
         {
-            state= GuardEnemyState.isDead;
+            state= GuardEnemyState.isDeath;
         }
         
 
@@ -77,7 +77,7 @@ public class GuardEnemy : Enemy
             
         }
     }
-    protected override void Attack()
+    public override void Hit()
     {
         IDamageable damageable=target.GetComponent<IDamageable>();
         if(damageable._isAlive)
@@ -98,14 +98,19 @@ public class GuardEnemy : Enemy
             if (level > damageable._level && damageable._isAlive)
             {
                 target = collision.transform;
-                state= GuardEnemyState.isAttacking;
-                Vector3 dirV = (target.position - transform.position).normalized;
-                Quaternion lookDirection = Quaternion.LookRotation(dirV);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, lookDirection,360);
+                AttackOnCollision();
             }
 
         }
 
+    }
+
+    public override void AttackOnCollision()
+    {
+        state = GuardEnemyState.isAttacking;
+        Vector3 dirV = (target.position - transform.position).normalized;
+        Quaternion lookDirection = Quaternion.LookRotation(dirV);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, lookDirection, 360);
     }
 
     IEnumerator DelayedStateChange(GuardEnemyState _state)

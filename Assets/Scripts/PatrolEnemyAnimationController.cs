@@ -33,12 +33,12 @@ public class PatrolEnemyAnimationController
             animator.SetBool("isMoving", true);
             animator.SetBool("isAttacking", false);
         }
-        if (state == PatrolEnemyState.isDead)
+        if (state == PatrolEnemyState.isDeath)
         {
             animator.SetBool("isGuarding", false);
             animator.SetBool("isMoving", false);
             animator.SetBool("isAttacking", false);
-            animator.SetBool("isDead", true);
+            animator.SetBool("isDeath", true);
 
 
         }
