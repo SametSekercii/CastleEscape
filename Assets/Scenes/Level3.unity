@@ -2073,6 +2073,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   visibleTargets: []
+  meshResolution: 0
+  edgeResolveIterations: 0
+  edgeDstThreshold: 0
+  viewMeshFilter: {fileID: 0}
+  isDrawFieldOfView: 0
 --- !u!1001 &606711989
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4271,6 +4276,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   visibleTargets: []
+  meshResolution: 0
+  edgeResolveIterations: 0
+  edgeDstThreshold: 0
+  viewMeshFilter: {fileID: 0}
+  isDrawFieldOfView: 0
 --- !u!195 &1116980114
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4300,10 +4310,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1144812979, guid: 4efdb292134fa134cbb9b979a6126f12, type: 3}
-      propertyPath: m_Speed
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 1880237516851552898, guid: 4efdb292134fa134cbb9b979a6126f12, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4347,10 +4353,6 @@ PrefabInstance:
     - target: {fileID: 1880237516851552898, guid: 4efdb292134fa134cbb9b979a6126f12, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1880237516851552903, guid: 4efdb292134fa134cbb9b979a6126f12, type: 3}
-      propertyPath: viewAngle
-      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 1880237516851552905, guid: 4efdb292134fa134cbb9b979a6126f12, type: 3}
       propertyPath: m_Name

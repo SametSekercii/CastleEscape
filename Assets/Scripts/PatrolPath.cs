@@ -26,7 +26,7 @@ public class PatrolPath : MonoBehaviour
         int counter = 0;
         for (int i = pathPoints.Length-1; i >=0;i--) 
         {
-            Debug.Log(i);
+            //Debug.Log(i);
             reversePath[counter] = pathPoints[i];
             counter++;
         }

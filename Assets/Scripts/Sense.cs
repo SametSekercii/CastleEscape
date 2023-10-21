@@ -17,7 +17,7 @@ public abstract class Sense : MonoBehaviour,ISense
     }
 
    
-    void Update()
+    void LateUpdate()
     {
         UpdateSense();
     }
