@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerController : Knights,IFieldOfView
 {
-    public enum PlayerState { isMoving,isAttacking,isWaiting}
+    public enum PlayerState { isMoving,isAttacking,isWaiting,isDead}
     public PlayerState state;
     PlayerMovement _playerMovement;
     PlayerAnimationController PlayerAnimationController;
@@ -28,28 +28,48 @@ public class PlayerController : Knights,IFieldOfView
     
     void FixedUpdate()
     {
+        Debug.Log(state);
         CheckState();
-        _playerMovement.Movement(_playerInput.moveVector);
         PlayerAnimationController.SetAnimations(state);
+
+        if(isAlive)
+        {
+            _playerMovement.Movement(_playerInput.moveVector);
+        }
+        
+       
     }
 
     private void CheckState()
     {
-        if (_playerInput.moveVector.magnitude > 0)
-        {
-            state = PlayerState.isMoving;
-        }
-        else state = PlayerState.isWaiting;
-        if(GetVisibleTargets().Count > 0)
-        {
-            Transform target = GetVisibleTargets()[0];
-            SetSeenTarget(target);
 
-            IDamageable damageableTarget = target.GetComponent<IDamageable>();
-            if (level > damageableTarget._level && damageableTarget._isAlive)
+        if (isAlive)
+        {
+            if (_playerInput.moveVector.magnitude > 0)
             {
-                state= PlayerState.isAttacking;
+                state = PlayerState.isMoving;
             }
+            else
+            {
+                state = PlayerState.isWaiting;
+            } 
+            if (GetVisibleTargets().Count > 0)
+            {
+                Transform target = GetVisibleTargets()[0];
+                SetSeenTarget(target);
+
+                IDamageable damageableTarget = target.GetComponent<IDamageable>();
+                if (level > damageableTarget._level && damageableTarget._isAlive)
+                {
+                    state = PlayerState.isAttacking;
+                }
+                
+            }
+
+        }
+        else
+        {
+            state = PlayerState.isDead;
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -62,7 +82,27 @@ public class PlayerController : Knights,IFieldOfView
             
         }
     }
-    
+    private void OnCollisionEnter(Collision collision)
+    {
+        IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+
+        if (damageable != null)
+        {
+            if (level > damageable._level && damageable._isAlive)
+            {
+                target = collision.transform;
+                state = PlayerState.isAttacking;
+                Vector3 dirV = (target.position - transform.position).normalized;
+                Quaternion lookDirection = Quaternion.LookRotation(dirV);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, lookDirection, 360);
+            }
+
+        }
+
+    }
+
+
+
     private void OnCollectBook(object levelUpAmount)
     {
        int  _levelUpAmount= (int)levelUpAmount;
@@ -78,6 +118,7 @@ public class PlayerController : Knights,IFieldOfView
     protected override void Attack()
     {
         target.GetComponent<IDamageable>().TakeDamage();
+        target = null;
         PlayerAnimationController.StopAttack();
     }
     public List<Transform> GetVisibleTargets() => fieldOfView.visibleTargets;

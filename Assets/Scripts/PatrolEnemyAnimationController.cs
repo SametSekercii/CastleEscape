@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GuardEnemy;
 using static PatrolEnemy;
 
 public class PatrolEnemyAnimationController 
@@ -32,5 +33,15 @@ public class PatrolEnemyAnimationController
             animator.SetBool("isMoving", true);
             animator.SetBool("isAttacking", false);
         }
+        if (state == PatrolEnemyState.isDead)
+        {
+            animator.SetBool("isGuarding", false);
+            animator.SetBool("isMoving", false);
+            animator.SetBool("isAttacking", false);
+            animator.SetBool("isDead", true);
+
+
+        }
     }
 }
+

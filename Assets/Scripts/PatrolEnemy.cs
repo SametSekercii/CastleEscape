@@ -8,7 +8,7 @@ using Newtonsoft.Json.Bson;
 
 public class PatrolEnemy : Enemy
 {
-    public enum PatrolEnemyState { isPatrolling,isChargingTarget,isAttacking, isBackingToPatrol }
+    public enum PatrolEnemyState { isPatrolling,isChargingTarget,isAttacking, isBackingToPatrol,isDead }
     PatrolEnemyState state=PatrolEnemyState.isPatrolling;
     PatrolEnemyAnimationController animationController;
     public bool isReversePatrol;
@@ -25,6 +25,7 @@ public class PatrolEnemy : Enemy
         path = GetComponent<PatrolPath>();
         fieldOfView = GetComponent<Perspective>();
         animationController = new PatrolEnemyAnimationController(animator);
+        LevelTextInitializer();
 
         targetPos = path.GetPathPoint(0);
 
@@ -32,9 +33,17 @@ public class PatrolEnemy : Enemy
 
     private void FixedUpdate()
     {
+        
+        if(isAlive)
+        {
+            Mission();
+        }
+       else
+        {
+            state = PatrolEnemyState.isDead;
+        }
        
-       
-        Mission();
+        
         animationController.SetAnimations(state);
 
     }
@@ -46,19 +55,19 @@ public class PatrolEnemy : Enemy
         {
             case PatrolEnemyState.isBackingToPatrol:
                 BackToPatrol();
-                Debug.Log("isBackingToPatrol");
+                //Debug.Log("isBackingToPatrol");
                 break;
             case PatrolEnemyState.isChargingTarget:
                 Charge(target);
-                Debug.Log("Charging");
+                //Debug.Log("Charging");
                 break;
             case PatrolEnemyState.isAttacking:
 
-                Debug.Log("Atttacking");
+                //Debug.Log("Atttacking");
                 break;
             case PatrolEnemyState.isPatrolling:
                 Patrol();
-                Debug.Log("Patrolling");
+                //Debug.Log("Patrolling");
                 break;
         }
 
@@ -134,5 +143,23 @@ public class PatrolEnemy : Enemy
     {
         yield return new WaitForSeconds(1f);
         state = _state;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+
+        if (damageable != null)
+        {
+            if (level > damageable._level && damageable._isAlive)
+            {
+                target = collision.transform;
+                state = PatrolEnemyState.isAttacking;
+                Vector3 dirV = (target.position - transform.position).normalized;
+                Quaternion lookDirection = Quaternion.LookRotation(dirV);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, lookDirection, 360);
+            }
+
+        }
+
     }
 }

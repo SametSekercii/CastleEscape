@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class GuardEnemy : Enemy
 {
-    public enum GuardEnemyState{isObservering,isAttacking ,isChargingTarget,isMovingGuardPoint}
+    public enum GuardEnemyState{isObservering,isAttacking ,isChargingTarget,isMovingGuardPoint,isDead}
 
     GuardEnemyState state=GuardEnemyState.isObservering;
     GuardEnemyAnimationController animationController;
@@ -20,6 +20,7 @@ public class GuardEnemy : Enemy
         agent=GetComponent<NavMeshAgent>();
         fieldOfView = GetComponent<Perspective>();
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
 
         SetGuardPointValues();
         LevelTextInitializer();
@@ -29,8 +30,15 @@ public class GuardEnemy : Enemy
     private void Update()
     {
         animationController.SetAnimations(state);
-
-        Mission();
+        if(isAlive)
+        {
+            Mission();
+        }
+        else
+        {
+            state= GuardEnemyState.isDead;
+        }
+        
 
     }
 
@@ -73,7 +81,7 @@ public class GuardEnemy : Enemy
     {
         IDamageable damageable=target.GetComponent<IDamageable>();
         if(damageable._isAlive)
-        {
+        {  
             agent.SetDestination(transform.position);
             damageable.TakeDamage();
         }
@@ -81,7 +89,26 @@ public class GuardEnemy : Enemy
 
 
     }
-   IEnumerator DelayedStateChange(GuardEnemyState _state)
+    private void OnCollisionEnter(Collision collision)
+    {
+        IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+
+        if (damageable != null)
+        {
+            if (level > damageable._level && damageable._isAlive)
+            {
+                target = collision.transform;
+                state= GuardEnemyState.isAttacking;
+                Vector3 dirV = (target.position - transform.position).normalized;
+                Quaternion lookDirection = Quaternion.LookRotation(dirV);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, lookDirection,360);
+            }
+
+        }
+
+    }
+
+    IEnumerator DelayedStateChange(GuardEnemyState _state)
     {
         yield return new WaitForSeconds(1f);
         state = _state;

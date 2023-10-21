@@ -31,5 +31,14 @@ public class GuardEnemyAnimationController
             animator.SetBool("isMoving", true);
             animator.SetBool("isAttacking", false);
         }
+        if(state==GuardEnemyState.isDead)
+        {
+            animator.SetBool("isGuarding", false);
+            animator.SetBool("isMoving", false);
+            animator.SetBool("isAttacking", false);
+            animator.SetBool("isDead", true);
+
+
+        }
     }
 }

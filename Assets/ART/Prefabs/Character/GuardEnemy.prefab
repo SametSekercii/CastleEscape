@@ -1103,6 +1103,7 @@ GameObject:
   - component: {fileID: 1880237516851552903}
   - component: {fileID: 1880237516851552902}
   - component: {fileID: 1144812979}
+  - component: {fileID: 1827219967}
   m_Layer: 11
   m_Name: GuardEnemy
   m_TagString: Untagged
@@ -1201,7 +1202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAlive: 1
-  level: 6
+  level: 10
   moveSpeed: 5
   levelText: {fileID: 1880237516577340735}
 --- !u!195 &1144812979
@@ -1226,6 +1227,22 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!54 &1827219967
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880237516851552905}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1880237516898701422
 GameObject:
   m_ObjectHideFlags: 0

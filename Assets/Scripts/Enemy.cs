@@ -14,9 +14,13 @@ public abstract class Enemy : Knights,IFieldOfView
 
     public override void TakeDamage()
     {
+        rb.AddForce(-transform.forward+transform.up*2,ForceMode.VelocityChange);
+        fieldOfView.enabled = false;
         isAlive = false;
     }
     protected abstract override void Attack();
+
+
 
     
     

@@ -28,17 +28,26 @@ public abstract class Knights : MonoBehaviour,IDamageable
         target = _target;
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+    
+    //public void LookAtTargetAttacking(Transform target)
+    //{
+    //    StartCoroutine(LookAtTargetAttackingCoroutine(target));
+    //}
+    //IEnumerator LookAtTargetAttackingCoroutine(Transform target)
+    //{
 
-        if (damageable != null)
-        {
-            if (level > damageable._level && damageable._isAlive) Attack();
-           
-        }
+    //    while (state == GuardEnemyState.isAttacking)
+    //    {
+    //        Vector3 dirV = (target.position - transform.position).normalized;
+    //        Quaternion lookDirection = Quaternion.LookRotation(dirV);
+    //        transform.rotation = Quaternion.RotateTowards(transform.rotation, lookDirection, 240f * Time.deltaTime);
 
-    }
+
+    //        yield return null;
+    //    }
+
+    //    yield return null;
+    //}
     protected void LevelTextInitializer() =>levelText.text="LV."+level.ToString();
 
     
