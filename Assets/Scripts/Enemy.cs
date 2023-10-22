@@ -9,6 +9,8 @@ public abstract class Enemy : Knights,IFieldOfView
     protected NavMeshAgent agent;
     protected float attackRange=2.2f;
     protected float deathDelay = 1.3f;
+    public BigDoorLock[] canOpenLocks;
+
     
 
     public List<Transform> GetVisibleTargets() => fieldOfView.visibleTargets;
@@ -25,10 +27,20 @@ public abstract class Enemy : Knights,IFieldOfView
     IEnumerator OnDeath()
     {
         isAlive = false;
-        rb.AddForce(-transform.forward + transform.up * 2, ForceMode.VelocityChange);
         yield return new WaitForSeconds(deathDelay);
         transform.gameObject.SetActive(false);
+        UnlockBigDoorLock();
         EffectPlacer.Instance.CreateDeathEffect(transform);
+    }
+    private void UnlockBigDoorLock()
+    {
+        if(canOpenLocks.Length > 0)
+        {
+            for(int i = 0; i < canOpenLocks.Length; i++)
+            {
+                canOpenLocks[i].Unlock();
+            }
+        }
     }
 
 

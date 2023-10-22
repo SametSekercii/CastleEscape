@@ -9,7 +9,7 @@ using Newtonsoft.Json.Bson;
 public class PatrolEnemy : Enemy
 {
     public enum PatrolEnemyState { isPatrolling,isChargingTarget,isAttacking, isBackingToPatrol,isDeath }
-    PatrolEnemyState state=PatrolEnemyState.isPatrolling;
+    public  PatrolEnemyState state=PatrolEnemyState.isPatrolling;
     PatrolEnemyAnimationController animationController;
     public bool isReversePatrol;
     PatrolPath path;
@@ -76,12 +76,12 @@ public class PatrolEnemy : Enemy
     {
 
         agent.SetDestination(targetPos);
-        Debug.Log(Vector3.Distance(transform.position, targetPos));
+        
         if(Vector3.Distance(transform.position,targetPos)<0.6f) state = PatrolEnemyState.isPatrolling;
     }
     private void Patrol()
     {
-
+        agent.speed = 2;
         if (Vector3.Distance(transform.position, targetPos) < 0.5f)
         {
             SetNewTargetPos();
@@ -136,6 +136,7 @@ public class PatrolEnemy : Enemy
         {
             agent.SetDestination(transform.position);
             damageable.TakeDamage();
+            StartCoroutine(DelayedStateChange(PatrolEnemyState.isBackingToPatrol));
         }
         else StartCoroutine(DelayedStateChange(PatrolEnemyState.isBackingToPatrol));
     }

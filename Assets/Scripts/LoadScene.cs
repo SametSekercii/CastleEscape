@@ -19,6 +19,12 @@ public class LoadScene : MonoBehaviour
 
     void SceneLoad()
     {
-        SceneManager.LoadScene(data.gameLevel);
+
+        if(data.gameLevel<5)
+        {
+            SceneManager.LoadScene(data.gameLevel);
+        }
+        else SceneManager.LoadScene(UnityEngine.Random.Range(1,6 ));
+
     }
 }

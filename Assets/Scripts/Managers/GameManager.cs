@@ -16,6 +16,7 @@ public class GameManager : UnitySingleton<GameManager>
     {
         player=FindObjectOfType<PlayerController>().gameObject;
         InvokeRepeating("SaveData", 0.05f, 0.05f);
+        EventManager.Broadcast(GameEvent.OnStart);
 
     }
 

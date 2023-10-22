@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 393588180614011596}
   - component: {fileID: 2195137776274766619}
   - component: {fileID: 2195137776274766618}
+  - component: {fileID: 442992784}
   m_Layer: 0
   m_Name: BlueKey
   m_TagString: Untagged
@@ -27,15 +28,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2195137776274766617}
-  m_LocalRotation: {x: 0.41101623, y: 0.010737412, z: 0.023805652, w: -0.9112539}
+  m_LocalRotation: {x: -0.41115645, y: 0, z: 0, w: 0.9115648}
   m_LocalPosition: {x: -0.8310561, y: -23.299217, z: 8.220893}
-  m_LocalScale: {x: 8.889416, y: 7.3091435, z: 7.3091435}
+  m_LocalScale: {x: 9.483519, y: 5.2830186, z: 5.2779007}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 236972562038935196}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -48.555, y: 0, z: -1802.993}
+  m_LocalEulerAnglesHint: {x: -48.555, y: 0, z: 0}
 --- !u!33 &2491257041710657030
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -64,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 94c70ea70e8271247885c23e9a266273, type: 2}
+  - {fileID: 2100000, guid: 2f137140526deb3488c1bd64a15ef65e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,6 +116,26 @@ MonoBehaviour:
   doorsCanUnlock:
   - {fileID: 0}
   icon: {fileID: 2927679382276654402, guid: deb0a5f22cc14704195e3e6e40b751d7, type: 3}
+--- !u!95 &442992784
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2195137776274766617}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e11c7d7cdf2e24b4e86e65657605a541, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &236972562039313276
 PrefabInstance:
   m_ObjectHideFlags: 0

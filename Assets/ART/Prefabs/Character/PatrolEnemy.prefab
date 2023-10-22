@@ -176,9 +176,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7609147508503685325}
-  m_LocalRotation: {x: -0, y: 0.7202652, z: -0, w: 0.6936988}
+  m_LocalRotation: {x: 0, y: 0.7202667, z: 0, w: 0.69369733}
   m_LocalPosition: {x: -4.38, y: 0.006, z: -34.96}
-  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
+  m_LocalScale: {x: 1.4466332, y: 1.1896669, z: 1.1898326}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7609147509654745344}
@@ -237,6 +237,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &7609147508503685321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +254,8 @@ MonoBehaviour:
   level: 3
   moveSpeed: 1
   levelText: {fileID: 7609147509475774606}
-  isReversePatrol: 1
+  state: 0
+  isReversePatrol: 0
 --- !u!54 &7609147508503685335
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -307,9 +309,9 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 2
-  m_Acceleration: 500
+  m_Acceleration: 800
   avoidancePriority: 50
-  m_AngularSpeed: 800
+  m_AngularSpeed: 500
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -1198,7 +1200,7 @@ RectTransform:
   m_GameObject: {fileID: 7609147509475774592}
   m_LocalRotation: {x: -0.16958913, y: -0, z: -0, w: 0.9855149}
   m_LocalPosition: {x: 0, y: 0, z: 3.637979e-12}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3377, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7609147509225983557}
@@ -1239,8 +1241,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: LV.5
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1270,7 +1272,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535

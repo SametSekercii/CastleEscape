@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8617662759262980880}
   - component: {fileID: 7825262665601919687}
   - component: {fileID: 7825262665601919686}
+  - component: {fileID: 1135064037}
   m_Layer: 0
   m_Name: RedKey
   m_TagString: Untagged
@@ -27,15 +28,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7825262665601919685}
-  m_LocalRotation: {x: 0.41101974, y: 0.010737549, z: 0.023805678, w: -0.9112523}
+  m_LocalRotation: {x: -0.41115645, y: 0, z: 0, w: 0.9115648}
   m_LocalPosition: {x: 4.58, y: -23.77, z: 8.13}
-  m_LocalScale: {x: 8.889416, y: 7.3091435, z: 7.3091435}
+  m_LocalScale: {x: 9.1816635, y: 6.214044, z: 6.211033}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8189722840542060352}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -48.555, y: 0, z: -1802.993}
+  m_LocalEulerAnglesHint: {x: -48.555, y: 0, z: 0}
 --- !u!33 &5799758733377241050
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -64,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 611c3f1847c56d64dae45fb1c86ce183, type: 2}
+  - {fileID: 2100000, guid: bc936972d83807a4da39fc5dbe9b7067, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,6 +116,26 @@ MonoBehaviour:
   doorsCanUnlock:
   - {fileID: 0}
   icon: {fileID: 6371996083415417131, guid: 3e6c3d9ec2a3a3f4b962a87b3cf6d172, type: 3}
+--- !u!95 &1135064037
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7825262665601919685}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 18b083e96d73624468e7cbb8f5dde403, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8189722840542268312
 GameObject:
   m_ObjectHideFlags: 0

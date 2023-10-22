@@ -18,7 +18,8 @@ public class UIManager : UnitySingleton<GameManager>
     [SerializeField] private GameObject winPanel;
     [SerializeField] private GameObject failPanel;
     [SerializeField] private GameObject joystick;
-    
+    [SerializeField] private TMP_Text gameLevelText;
+
     [Space(15)]
     [Header("Arrays")]
     [SerializeField] private GameObject[] keySlots;
@@ -31,17 +32,22 @@ public class UIManager : UnitySingleton<GameManager>
     {   
         gameManager = FindObjectOfType<GameManager>();
         gameData = gameManager.gameData;
+        
     }
+    
     private void OnEnable()
     {
         EventManager.AddHandler(GameEvent.OnEscape, OnEscape);
         EventManager.AddHandler(GameEvent.OnFail, OnFail);
         EventManager.AddHandler(GameEvent.OnCollectKey, OnCollectKey);
+        EventManager.AddHandler(GameEvent.OnStart, OnStart);
     }
     private void OnDisable()
     {
         EventManager.RemoveHandler(GameEvent.OnEscape, OnEscape);
         EventManager.RemoveHandler(GameEvent.OnFail, OnFail);
+        EventManager.RemoveHandler(GameEvent.OnCollectKey, OnCollectKey);
+        EventManager.RemoveHandler(GameEvent.OnStart, OnStart);
     }
     private void OnEscape()
     {
@@ -53,6 +59,11 @@ public class UIManager : UnitySingleton<GameManager>
         OpenPanel(failPanel, "SoundPanelPop");
         DisableJoyStick();
     }
+
+    private void OnStart()
+    {
+        gameLevelText.text ="Level "+gameData.gameLevel.ToString();
+    }
     private void DisableJoyStick( )=> joystick.SetActive(false);
     private void OpenPanel(GameObject panel,string sound)
     {
@@ -63,6 +74,11 @@ public class UIManager : UnitySingleton<GameManager>
     {
         EventManager.Broadcast(GameEvent.OnPlaySound, "SoundClick");
         SceneManager.LoadScene(gameData.gameLevel);
+    }
+    public void Restart()
+    {
+        EventManager.Broadcast(GameEvent.OnPlaySound, "SoundClick");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     private void OnCollectKey(object keyIcon)
     {

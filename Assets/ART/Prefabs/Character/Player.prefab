@@ -141,7 +141,7 @@ RectTransform:
   m_GameObject: {fileID: 4096862883907454468}
   m_LocalRotation: {x: -0.16958913, y: -0, z: -0, w: 0.9855149}
   m_LocalPosition: {x: 0, y: 0, z: 3.637979e-12}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5479293, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4096862883289358599}
@@ -182,8 +182,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: LV.5
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -213,7 +213,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0.7955324, z: 0, w: 0.73064005}
+  m_margin: {x: 0, y: 0.7955324, z: 0, w: 0.7596665}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -326,6 +326,7 @@ GameObject:
   - component: {fileID: 4096862885035393895}
   - component: {fileID: 4096862884512731350}
   - component: {fileID: 4096862884512731351}
+  - component: {fileID: 582738326}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -399,8 +400,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225744660bf51d54aaae06e9d2f3abbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAlive: 1
   level: 1
+  moveSpeed: 5
   levelText: {fileID: 4096862883907454470}
+  state: 0
 --- !u!114 &4096862884512731350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,6 +432,32 @@ CapsuleCollider:
   m_Height: 1.9234035
   m_Direction: 1
   m_Center: {x: -0.019999998, y: 0.7142941, z: 0}
+--- !u!114 &582738326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4096862884512731349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c819a889e58c8648ab7a059bda8851a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewRadius: 2
+  viewAngle: 102
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  visibleTargets: []
+  meshResolution: 0
+  edgeResolveIterations: 0
+  edgeDstThreshold: 0
+  viewMeshFilter: {fileID: 0}
+  isDrawFieldOfView: 0
 --- !u!1 &4096862884512732103
 GameObject:
   m_ObjectHideFlags: 0

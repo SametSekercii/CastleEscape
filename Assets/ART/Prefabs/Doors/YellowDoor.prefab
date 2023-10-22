@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5596549731872425932}
   - component: {fileID: 5596549731872425931}
   - component: {fileID: 5596549731872425934}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Door2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 5985819200653721798}
   - component: {fileID: 5985819200653721797}
   - component: {fileID: 5985819200653721816}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Door1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 7449024475733990305}
   - component: {fileID: 7449024475733990306}
   - component: {fileID: 3015643280437719877}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: YellowDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -355,7 +355,7 @@ Transform:
   m_GameObject: {fileID: 7794482905629114651}
   m_LocalRotation: {x: 0, y: 0.9999984, z: 0, w: 0.0017977266}
   m_LocalPosition: {x: -1.52, y: 0.0060782433, z: -15.68}
-  m_LocalScale: {x: 1.0334818, y: 0.849762, z: 0.84976405}
+  m_LocalScale: {x: 1.0680847, y: 0.7220955, z: 0.72209895}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5985819200653721796}

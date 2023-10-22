@@ -29,7 +29,7 @@ public class PlayerController : Knights,IFieldOfView
     
     void FixedUpdate()
     {
-        Debug.Log(state);
+       
         CheckState();
         PlayerAnimationController.SetAnimations(state);
 

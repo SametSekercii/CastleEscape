@@ -7,7 +7,9 @@ public enum GameEvent
     OnEscape,
     OnFail,
     OnCollectKey,
-    OnCollectBook
+    OnCollectBook,
+    OnStart
+
 
 
 }
