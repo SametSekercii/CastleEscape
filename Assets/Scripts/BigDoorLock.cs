@@ -14,7 +14,7 @@ public class BigDoorLock : MonoBehaviour
     IEnumerator UnlockAnimated()
     {
 
-        transform.DOMoveX(transform.position.y-3,2.5f).OnComplete(() =>
+        transform.DOMoveX(transform.position.x-3,2.5f).OnComplete(() =>
         {
             gameObject.SetActive(false);
         }); ;

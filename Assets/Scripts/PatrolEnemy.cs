@@ -132,7 +132,7 @@ public class PatrolEnemy : Enemy
     public override void Hit()
     {
         IDamageable damageable = target.GetComponent<IDamageable>();
-        if (damageable._isAlive)
+        if (damageable._isAlive && level > damageable._level)
         {
             agent.SetDestination(transform.position);
             damageable.TakeDamage();

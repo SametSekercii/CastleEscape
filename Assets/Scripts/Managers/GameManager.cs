@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : UnitySingleton<GameManager>
 {
     public GameData gameData;
-    public GameObject player;
+   
     private void Awake()
     {
         Application.targetFrameRate = 60;
@@ -14,7 +14,7 @@ public class GameManager : UnitySingleton<GameManager>
    
     void Start()
     {
-        player=FindObjectOfType<PlayerController>().gameObject;
+     
         InvokeRepeating("SaveData", 0.05f, 0.05f);
         EventManager.Broadcast(GameEvent.OnStart);
 
@@ -36,10 +36,11 @@ public class GameManager : UnitySingleton<GameManager>
     }
     private void OnDisable()
     {
-        EventManager.AddHandler(GameEvent.OnEscape, OnEscape);
+        EventManager.RemoveHandler(GameEvent.OnEscape, OnEscape);
     }
     private void OnEscape()
     {
-        gameData.gameLevel++;
+        Debug.Log("leveled up");
+        gameData.gameLevel+=1;
     }
 }

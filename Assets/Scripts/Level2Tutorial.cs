@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Level2Tutorial : MonoBehaviour
 {
-    public GameObject takeTheKey;
+    public GameObject CollectTheKey;
     public GameObject unlockDoor;
     public GameObject tutorialKey;
     private bool isDoorOpen=false;
@@ -22,7 +22,7 @@ public class Level2Tutorial : MonoBehaviour
         {
             if (tutorialKey.activeInHierarchy)
             {
-                takeTheKey.SetActive(true);
+                CollectTheKey.SetActive(true);
                 unlockDoor.SetActive(false);
 
                 yield return null;
@@ -30,8 +30,8 @@ public class Level2Tutorial : MonoBehaviour
             }
             else
             {
-                    
-                takeTheKey.SetActive(false);
+
+                CollectTheKey.SetActive(false);
                 if(!isDoorOpen) 
                     unlockDoor.SetActive(true);
 

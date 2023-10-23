@@ -52,6 +52,7 @@ public class UIManager : UnitySingleton<GameManager>
     private void OnEscape()
     {
         OpenPanel(winPanel,"SoundPanelPop");
+       
         DisableJoyStick();
     }
     private void OnFail()
@@ -73,7 +74,12 @@ public class UIManager : UnitySingleton<GameManager>
     public void Next()
     {
         EventManager.Broadcast(GameEvent.OnPlaySound, "SoundClick");
+        if(gameData.gameLevel<=5)
         SceneManager.LoadScene(gameData.gameLevel);
+        else
+        SceneManager.LoadScene(UnityEngine.Random.Range(1, 6));
+
+
     }
     public void Restart()
     {
